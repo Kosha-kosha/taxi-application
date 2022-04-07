@@ -1,0 +1,8 @@
+adapters:
+  135:
+    url: https://client.135.by/api/geo/prices
+  107:
+    url: https://taxi107-minsk.hivelogin.ru/api/client/web/1.0/order/estimate
+  yandex:
+    url: sf
+
