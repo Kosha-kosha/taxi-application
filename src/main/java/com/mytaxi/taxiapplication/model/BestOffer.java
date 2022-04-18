@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.models;
+package com.mytaxi.taxiapplication.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -156,7 +156,9 @@
                                     Укажите место посадки <br>
                                 </div>
                                 <label>
-                                    <input type="text" name="input_start_point" th:field="*{startPoint}" placeholder="Город, улица, дом" class="index__entrance-input"
+                                    <input type="text" name="input_start_point" th:field="*{startPoint.street}" placeholder="Улица" class="index__entrance-input"
+                                           style="margin-top: 10px;width: 350px; height: 35px">
+                                    <input type="text" name="input_start_point" th:field="*{startPoint.homeNumber}" placeholder="Номер дома" class="index__entrance-input"
                                            style="margin-top: 10px;width: 350px; height: 35px">
                                 </label>
 
@@ -169,7 +171,9 @@
                                     Укажите пункт назначения
                                 </div>
                                 <label>
-                                    <input type="text" name="input_finish_point" th:field="*{finishPoint}" placeholder="Город, улица, дом" class="index__entrance-input"
+                                    <input type="text" name="input_finish_point" th:field="*{finishPoint.street}" placeholder="Улица" class="index__entrance-input"
+                                           style="margin-top: 10px;width: 350px; height: 35px">
+                                    <input type="text" name="input_finish_point" th:field="*{finishPoint.homeNumber}" placeholder="Номер дома" class="index__entrance-input"
                                            style="margin-top: 10px;width: 350px; height: 35px">
                                 </label>
 
@@ -180,207 +184,217 @@
                                                                       class="promo-mobile__button"><span>Добавьте карту</span></a>
                         </div>
                     </div>
+
                     <div class="index__body index__body--white">
-                        <!--                    <div class="index__geolocate"></div>-->
-                        <!--                    <div class="index__details">-->
-                        <!--                        <div class="index__details-form">-->
-                        <!--                            <div class="index__form index__form&#45;&#45;inline form">-->
-                        <!--                                <div class="form__row"><input type="text" placeholder="Имя" name="name"-->
-                        <!--                                                              class="form__field"></div>-->
-                        <!--                                <div class="form__row">-->
-                        <!--                                    <div class="intl-tel-input allow-dropdown separate-dial-code iti-sdc-4">-->
-                        <!--                                        <div class="flag-container">-->
-                        <!--                                            <div class="selected-flag" tabindex="0" title="Belarus (Беларусь): +375">-->
-                        <!--                                                <div class="iti-flag by"></div>-->
-                        <!--                                                <div class="selected-dial-code">+375</div>-->
-                        <!--                                                <div class="iti-arrow"></div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <input type="tel" autocomplete="off" name="phoneNumber" class="form__field"-->
-                        <!--                                               placeholder="29 491-19-11"></div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="index__details-wrap">-->
-                        <!--                            <div class="index__types">-->
-                        <!--                                <div class="index__types-item index__types-item&#45;&#45;active">-->
-                        <!--                                    <div class="index__types-wrap">-->
-                        <!--                                        <div class="index__types-info">-->
-                        <!--                                            <div class="index__types-indicator" style="">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
-                        <!--                                                          fill="#DF0909"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-indicator">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
-                        <!--                                                          fill="#8C8C8C"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-image">-->
-                        <!--                                            <div class="index__types-icon index__types-icon&#45;&#45;regular"></div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-content">-->
-                        <!--                                            <div class="index__types-label">Такси 135 <span style="display: none;">5 мест</span>-->
-                        <!--                                                <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-value">-->
-                        <!--                                                <div class="index__types-value-current">от <span>5,00</span> BYN</div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="index__types-item">-->
-                        <!--                                    <div class="index__types-wrap">-->
-                        <!--                                        <div class="index__types-info">-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
-                        <!--                                                          fill="#DF0909"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
-                        <!--                                                          fill="#8C8C8C"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-image">-->
-                        <!--                                            <div class="index__types-icon index__types-icon&#45;&#45;comfort"></div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-content">-->
-                        <!--                                            <div class="index__types-label">Такси 135+ <span style="display: none;">5 мест</span>-->
-                        <!--                                                <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-value">-->
-                        <!--                                                <div class="index__types-value-current">от <span>5,62</span> BYN</div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="index__types-item">-->
-                        <!--                                    <div class="index__types-wrap">-->
-                        <!--                                        <div class="index__types-info">-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
-                        <!--                                                          fill="#DF0909"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
-                        <!--                                                          fill="#8C8C8C"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-image">-->
-                        <!--                                            <div class="index__types-icon index__types-icon&#45;&#45;delivery"></div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-content">-->
-                        <!--                                            <div class="index__types-label">Доставка <span-->
-                        <!--                                                    style="display: none;">5 мест</span> <span style="display: none;">6 мест</span>-->
-                        <!--                                                <span style="display: none;">7 мест</span></div>-->
-                        <!--                                            <div class="index__types-value">-->
-                        <!--                                                <div class="index__types-value-current">от <span>5,00</span> BYN</div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="index__types-item">-->
-                        <!--                                    <div class="index__types-wrap">-->
-                        <!--                                        <div class="index__types-info">-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
-                        <!--                                                          fill="#DF0909"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
-                        <!--                                                          fill="#8C8C8C"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-image">-->
-                        <!--                                            <div class="index__types-icon index__types-icon&#45;&#45;minivan"></div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-content">-->
-                        <!--                                            <div class="index__types-label">Минивэн <span-->
-                        <!--                                                    style="display: none;">5 мест</span> <span style="display: none;">6 мест</span>-->
-                        <!--                                                <span style="display: none;">7 мест</span></div>-->
-                        <!--                                            <div class="index__types-value">-->
-                        <!--                                                <div class="index__types-value-current">от <span>8,75</span> BYN</div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                                <div class="index__types-item">-->
-                        <!--                                    <div class="index__types-wrap">-->
-                        <!--                                        <div class="index__types-info">-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
-                        <!--                                                          fill="#DF0909"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-indicator" style="display: none;">-->
-                        <!--                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
-                        <!--                                                     xmlns="http://www.w3.org/2000/svg">-->
-                        <!--                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
-                        <!--                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
-                        <!--                                                          fill="#8C8C8C"></path>-->
-                        <!--                                                </svg>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-image">-->
-                        <!--                                            <div class="index__types-icon index__types-icon&#45;&#45;estate"></div>-->
-                        <!--                                        </div>-->
-                        <!--                                        <div class="index__types-content">-->
-                        <!--                                            <div class="index__types-label">Универсал <span style="display: none;">5 мест</span>-->
-                        <!--                                                <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
-                        <!--                                            </div>-->
-                        <!--                                            <div class="index__types-value">-->
-                        <!--                                                <div class="index__types-value-current">от <span>6,12</span> BYN</div>-->
-                        <!--                                            </div>-->
-                        <!--                                        </div>-->
-                        <!--                                    </div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                            <div class="index__group">-->
-                        <!--                                <div class="button button&#45;&#45;link index__group-button index__group-button&#45;&#45;payment">-->
-                        <!--                                    &lt;!&ndash;&ndash;&gt;-->
-                        <!--                                    <div class="index__group-text">Наличные</div> &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
-                        <!--                                <span class="index__group-separator"></span>-->
-                        <!--                                <div class="button button&#45;&#45;link index__group-button index__group-button&#45;&#45;preferences">-->
-                        <!--                                    <div class="index__group-text">Комментарий, услуги</div>-->
-                        <!--                                    <div class="index__group-icons"></div>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!--                        </div>-->
-                        <!--                    </div>-->
+
+                                            <div class="index__geolocate"></div>
+                                            <div class="index__details">
+<!--                                                <div class="index__details-form">-->
+<!--                                                    <div class="index__form index__form&#45;&#45;inline form">-->
+<!--                                                        <div class="form__row"><input type="text" placeholder="Имя" name="name"-->
+<!--                                                                                      class="form__field"></div>-->
+<!--                                                        <div class="form__row">-->
+<!--                                                            <div class="intl-tel-input allow-dropdown separate-dial-code iti-sdc-4">-->
+<!--                                                                <div class="flag-container">-->
+<!--                                                                    <div class="selected-flag" tabindex="0" title="Belarus (Беларусь): +375">-->
+<!--                                                                        <div class="iti-flag by"></div>-->
+<!--                                                                        <div class="selected-dial-code">+375</div>-->
+<!--                                                                        <div class="iti-arrow"></div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <input type="tel" autocomplete="off" name="phoneNumber" class="form__field"-->
+<!--                                                                       placeholder="29 491-19-11"></div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                                <div class="index__details-wrap">
+<!--                                                    <div class="index__types">-->
+<!--                                                        <div class="index__types-item index__types-item&#45;&#45;active">-->
+<!--                                                            <div class="index__types-wrap">-->
+<!--                                                                <div class="index__types-info">-->
+<!--                                                                    <div class="index__types-indicator" style="">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
+<!--                                                                                  fill="#DF0909"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-indicator">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
+<!--                                                                                  fill="#8C8C8C"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-image">-->
+<!--                                                                    <div class="index__types-icon index__types-icon&#45;&#45;regular"></div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-content">-->
+<!--                                                                    <div class="index__types-label">Такси 135 <span style="display: none;">5 мест</span>-->
+<!--                                                                        <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-value">-->
+<!--                                                                        <div class="index__types-value-current">от <span>5,00</span> BYN</div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="index__types-item">-->
+<!--                                                            <div class="index__types-wrap">-->
+<!--                                                                <div class="index__types-info">-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
+<!--                                                                                  fill="#DF0909"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
+<!--                                                                                  fill="#8C8C8C"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-image">-->
+<!--                                                                    <div class="index__types-icon index__types-icon&#45;&#45;comfort"></div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-content">-->
+<!--                                                                    <div class="index__types-label">Такси 135+ <span style="display: none;">5 мест</span>-->
+<!--                                                                        <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-value">-->
+<!--                                                                        <div class="index__types-value-current">от <span>5,62</span> BYN</div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="index__types-item">-->
+<!--                                                            <div class="index__types-wrap">-->
+<!--                                                                <div class="index__types-info">-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
+<!--                                                                                  fill="#DF0909"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
+<!--                                                                                  fill="#8C8C8C"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-image">-->
+<!--                                                                    <div class="index__types-icon index__types-icon&#45;&#45;delivery"></div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-content">-->
+<!--                                                                    <div class="index__types-label">Доставка <span-->
+<!--                                                                            style="display: none;">5 мест</span> <span style="display: none;">6 мест</span>-->
+<!--                                                                        <span style="display: none;">7 мест</span></div>-->
+<!--                                                                    <div class="index__types-value">-->
+<!--                                                                        <div class="index__types-value-current">от <span>5,00</span> BYN</div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="index__types-item">-->
+<!--                                                            <div class="index__types-wrap">-->
+<!--                                                                <div class="index__types-info">-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
+<!--                                                                                  fill="#DF0909"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
+<!--                                                                                  fill="#8C8C8C"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-image">-->
+<!--                                                                    <div class="index__types-icon index__types-icon&#45;&#45;minivan"></div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-content">-->
+<!--                                                                    <div class="index__types-label">Минивэн <span-->
+<!--                                                                            style="display: none;">5 мест</span> <span style="display: none;">6 мест</span>-->
+<!--                                                                        <span style="display: none;">7 мест</span></div>-->
+<!--                                                                    <div class="index__types-value">-->
+<!--                                                                        <div class="index__types-value-current">от <span>8,75</span> BYN</div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                        <div class="index__types-item">-->
+<!--                                                            <div class="index__types-wrap">-->
+<!--                                                                <div class="index__types-info">-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"-->
+<!--                                                                                  fill="#DF0909"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-indicator" style="display: none;">-->
+<!--                                                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                                            <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                                                                  d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"-->
+<!--                                                                                  fill="#8C8C8C"></path>-->
+<!--                                                                        </svg>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-image">-->
+<!--                                                                    <div class="index__types-icon index__types-icon&#45;&#45;estate"></div>-->
+<!--                                                                </div>-->
+<!--                                                                <div class="index__types-content">-->
+<!--                                                                    <div class="index__types-label">Универсал <span style="display: none;">5 мест</span>-->
+<!--                                                                        <span style="display: none;">6 мест</span> <span style="display: none;">7 мест</span>-->
+<!--                                                                    </div>-->
+<!--                                                                    <div class="index__types-value">-->
+<!--                                                                        <div class="index__types-value-current">от <span>6,12</span> BYN</div>-->
+<!--                                                                    </div>-->
+<!--                                                                </div>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </div>-->
+                                                    <div class="index__group">
+                                                        <div>
+                                                            <div class="index__input-placeholder">
+                                                                Комментарий
+                                                            </div>
+                                                            <input type="text" th:field="*{description}" style="margin-top: 10px;width: 350px; height: 35px;
+                                                               background-color:#f9f9f9; border: 2px solid #f9f9f9 " placeholder="Например: Еду с собакой">
+
+                                                        </div>
+<!--                                                        <div class="button button&#45;&#45;link index__group-button index__group-button&#45;&#45;payment">-->
+<!--                                                            &lt;!&ndash;&ndash;&gt;-->
+<!--                                                            <div class="index__group-text">Наличные</div> &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt;</div>-->
+<!--                                                        <span class="index__group-separator"></span>-->
+<!--                                                        <div class="button button&#45;&#45;link index__group-button index__group-button&#45;&#45;preferences">-->
+<!--                                                            <div class="index__group-text">Комментарий, услуги</div>-->
+<!--                                                            <div class="index__group-icons"></div>-->
+<!--                                                        </div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
                         <div class="index__action index__action--inline">
                             <button type="submit" class="button button--default">Вызвать автомобиль</button>
                         </div>

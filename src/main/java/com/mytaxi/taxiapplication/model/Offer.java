@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.models;
+package com.mytaxi.taxiapplication.model;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

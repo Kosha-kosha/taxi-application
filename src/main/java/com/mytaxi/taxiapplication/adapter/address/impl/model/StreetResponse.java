@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.adapter.taxi107.model;
+package com.mytaxi.taxiapplication.adapter.address.impl.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -7,15 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
-public class Price107Request {
-    Object[] options;
-    List<Location> route;
+public class StreetResponse {
+    StreetResponsesObject[] levels;
+    Integer priority;
 }

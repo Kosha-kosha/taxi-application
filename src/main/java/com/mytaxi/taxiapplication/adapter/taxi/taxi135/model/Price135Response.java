@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.adapter.taxi107.model;
+package com.mytaxi.taxiapplication.adapter.taxi.taxi135.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,6 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Price107Response {
+public class Price135Response {
     BigDecimal price;
 }

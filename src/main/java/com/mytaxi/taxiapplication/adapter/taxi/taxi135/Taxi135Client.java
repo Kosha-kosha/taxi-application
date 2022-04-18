@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.adapter.taxi135;
+package com.mytaxi.taxiapplication.adapter.taxi.taxi135;
 
 //@FeignClient(url = "${adapters.135.url}")
 public interface Taxi135Client {

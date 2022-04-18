@@ -1,9 +1,9 @@
 package com.mytaxi.taxiapplication.service;
 
-import com.mytaxi.taxiapplication.adapter.BaseTaxiAdapter;
-import com.mytaxi.taxiapplication.models.BestOffer;
-import com.mytaxi.taxiapplication.models.Offer;
-import com.mytaxi.taxiapplication.models.Order;
+import com.mytaxi.taxiapplication.adapter.taxi.BaseTaxiAdapter;
+import com.mytaxi.taxiapplication.model.BestOffer;
+import com.mytaxi.taxiapplication.model.Offer;
+import com.mytaxi.taxiapplication.model.Order;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

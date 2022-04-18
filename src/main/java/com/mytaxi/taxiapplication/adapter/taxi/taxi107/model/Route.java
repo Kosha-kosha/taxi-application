@@ -1,22 +1,22 @@
-package com.mytaxi.taxiapplication.adapter.taxi107.model;
+package com.mytaxi.taxiapplication.adapter.taxi.taxi107.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.math.BigInteger;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Location {
-//    @JsonProperty("0")
+public class Route {
+    //    @JsonProperty("0")
 //    String x;
 //    @JsonProperty("1")
 //    String y;
-    Coordinates coordinates;
-    String id;
-    Map<String, String> info;
+    BigInteger id;
+    Info info;
+    Point coordinates;
 }

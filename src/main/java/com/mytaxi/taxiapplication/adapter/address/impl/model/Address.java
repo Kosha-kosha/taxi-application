@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.adapter.taxi107.model;
+package com.mytaxi.taxiapplication.adapter.address.impl.model;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,8 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Coordinates {
-    String[] coordinates;
-    String type = "Point";
+public class Address {
+    String city;
+    String street;
+    String homeNumber;
 }
