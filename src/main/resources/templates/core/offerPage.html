@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MyTaxi</title>
+
+    <link rel="icon" type="image/png" href="https://www.135.by/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.135.by/apple-touch-icon.png">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/style.fdb1b4c760af8d4a13a9.css}">
+</head>
+<body class="theme-default">
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPTF43W"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="container container--main container--promo">
+
+    <div class="navigation">
+        <div class="navigation__action"><a href="https://www.135.by/#" class="navigation__button"><span><svg
+                xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14"><g fill="currentColor"
+                                                                                                 fill-rule="evenodd"><rect
+                width="20" height="2" y="12" rx="1"></rect><rect width="20" height="2" y="6" rx="1"></rect><rect
+                width="20" height="2" rx="1"></rect></g></svg>
+</span></a> <a href="https://www.135.by/#/" class="navigation__logotype router-link-active"></a></div>
+        <div class="navigation__container">
+            <div class="navigation__content">
+                <div class="navigation__bar">
+                    <div class="navigation__profile">
+                        <div class="navigation__photo"></div>
+                        <div class="navigation__data"><a href="https://www.135.by/#/login"
+                                                         class="navigation__value navigation__nav">Войти</a></div>
+                    </div>
+                </div>
+                <div class="navigation__menu"><a href="https://www.135.by/#/"
+                                                 class="navigation__menu-link router-link-active"><span
+                        class="navigation__menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width="38" height="15"
+                                                           viewBox="0 0 38 15"><g fill="none" fill-rule="evenodd"
+                                                                                  stroke="currentColor"
+                                                                                  stroke-width="1.2"
+                                                                                  transform="translate(1)"
+                                                                                  stroke-linecap="round"
+                                                                                  stroke-linejoin="round"><path
+                        d="M26.1,11.7 C24.7,11.6 22.8,11.5 21.9,11.5 C20.9,11.5 14.4,11.3 13.2,11.4 C12.8,11.4 12.6,11.4 12.3,11.5"></path><path
+                        d="M3.5,11.1 C2.6,11 1.7,10.8 1.4,10.8 C1,10.7 0.7,10.3 0.5,10 C0.4,9.7 0.3,8.4 0.4,8 C0.5,7.7 0.5,7.7 0.7,7.5 C0.9,7.3 1.1,7 1.1,6.6 C1.1,6.2 1.3,5.2 1.3,5.1 C1.3,5 1.4,4.9 1.5,4.8 C1.6,4.7 1.5,4.2 1.5,4 C1.4,3.8 1.7,3.8 1.7,3.8 C1.7,3.8 4,3.6 4.3,3.6 C4.7,3.5 9.8,1.2 13.5,1 C17.3,0.8 19.9,1 21.9,1.8 C23.9,2.6 27.4,4.5 28.1,4.8 C28.1,4.8 33.2,5.1 35.2,7.1 C36.7,8.7 36.3,11.2 35.9,11.5 C35.7,11.7 35.2,11.7 34.6,11.8"></path><circle
+                        cx="7.9" cy="10.9" r="2.6"></circle><circle cx="30.3" cy="10.9" r="2.6"></circle></g></svg>
+</span> <span class="navigation__menu-label">Вызвать автомобиль</span></a> <a href="https://www.135.by/#/tariffs"
+                                                                              class="navigation__menu-link"><span
+                        class="navigation__menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="23"
+                                                           viewBox="0 0 26 23"><g fill="none" fill-rule="evenodd"
+                                                                                  stroke="currentColor"
+                                                                                  stroke-width="1.2"
+                                                                                  transform="translate(0 1)"
+                                                                                  stroke-linecap="round"
+                                                                                  stroke-linejoin="round"><ellipse
+                        cx="17.8" cy="2.5" rx="6.8" ry="2.5"></ellipse><path
+                        d="M24.5 5.1C24.6 5.3 24.7 5.4 24.7 5.6 24.7 6.2 24.1 6.7 23.2 7.2 22 7.8 20.1 8.1 17.9 8.1 15.7 8.1 13.8 7.7 12.6 7.2 11.6 6.8 11.1 6.2 11.1 5.6 11.1 5.4 11.2 5.3 11.3 5.1M24.5 8.3C24.6 8.5 24.7 8.6 24.7 8.8 24.7 9.4 24.1 9.9 23.2 10.4 22 11 20.1 11.3 17.9 11.3 15.7 11.3 13.8 10.9 12.6 10.4 11.6 10 11.1 9.4 11.1 8.8 11.1 8.6 11.2 8.5 11.3 8.3M24.5 11.5C24.6 11.7 24.7 11.8 24.7 12 24.7 12.6 24.1 13.1 23.2 13.6 22 14.2 20.1 14.5 17.9 14.5 15.7 14.5 13.8 14.1 12.6 13.6 11.6 13.2 11.1 12.6 11.1 12 11.1 11.8 11.2 11.7 11.3 11.5M24.5 14.6C24.6 14.8 24.7 14.9 24.7 15.1 24.7 15.7 24.1 16.2 23.2 16.7 22 17.3 20.1 17.6 17.9 17.6 15.7 17.6 13.8 17.2 12.6 16.7 11.6 16.3 11.1 15.7 11.1 15.1 11.1 14.9 11.2 14.8 11.3 14.6M24.5 17.8C24.6 18 24.7 18.1 24.7 18.3 24.7 18.9 24.1 19.4 23.2 19.9 22 20.5 20.1 20.8 17.9 20.8 15.7 20.8 13.8 20.4 12.6 19.9 11.6 19.5 11.1 18.9 11.1 18.3 11.1 18.1 11.2 18 11.3 17.8M9.6 9.3C8.9 9.4 8.2 9.4 7.5 9.4 3.7 9.4.7 8.3.7 6.9.7 5.5 3.8 4.4 7.5 4.4 8.2 4.4 8.9 4.4 9.6 4.5M.8 9.5C.7 9.7.6 9.8.6 10 .6 10.6 1.2 11.1 2.1 11.6 3.3 12.2 5.3 12.5 7.4 12.5 8.1 12.5 8.8 12.5 9.5 12.4M.8 12.7C.7 12.9.6 13 .6 13.2.6 13.8 1.2 14.3 2.1 14.8 3.3 15.4 5.3 15.7 7.4 15.7 8.1 15.7 8.8 15.7 9.5 15.6"></path></g></svg>
+</span> <span class="navigation__menu-label">Тарифы</span></a> <a href="https://www.135.by/#/about/contacts"
+                                                                  class="navigation__menu-link"><span
+                        class="navigation__menu-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="20"
+                                                           viewBox="0 0 19 20"><g fill="none" fill-rule="evenodd"><path
+                        stroke="currentColor" stroke-width="1.2"
+                        d="M4.16405104,19.3983352 C4.16300499,19.3981561 4.16199891,19.3980021 4.16103283,19.3978713 C4.16357774,19.3982158 4.16654961,19.3985157 4.17024093,19.3987729 Z M4.19254096,19.3996461 C4.20411134,19.3998859 4.21935607,19.4 4.23993289,19.4 C4.2910786,19.4 4.29396529,19.3991954 4.31257765,19.386018 L6.45016781,17.9044925 C8.87850435,16.2336845 11.7389485,15.3516616 14.7281879,15.3516616 C16.7628725,15.3516616 18.4,13.8001781 18.4,11.9033233 L18.4,4.04833837 C18.4,2.1514835 16.7628725,0.6 14.7281879,0.6 L4.27181208,0.6 C2.23712747,0.6 0.6,2.1514835 0.6,4.04833837 L0.6,11.9335347 C0.6,13.6046638 1.88793051,15.0401584 3.63654017,15.3294992 L4.1385906,15.4125731 L4.1385906,19.3353474 C4.1385906,19.3427529 4.1544491,19.369442 4.19254096,19.3996461 Z"></path><g
+                        fill="currentColor" transform="translate(6 4)"><path
+                        d="M3 .020855615C1.76666667.020855615.566666667.846737968.566666667 2.42967914.566666667 2.84262032.9 3.18673797 1.3 3.18673797 1.7 3.18673797 2.03333333 2.84262032 2.03333333 2.42967914 2.03333333 1.60379679 2.9 1.56938503 3 1.56938503 3.1 1.56938503 3.96666667 1.60379679 3.96666667 2.42967914L3.96666667 2.60173797C3.96666667 2.94585561 3.8 3.22114973 3.5 3.39320856L2.83333333 3.77173797C2.46666667 3.97820856 2.26666667 4.35673797 2.26666667 4.76967914L2.26666667 5.38909091C2.26666667 5.80203209 2.6 6.14614973 3 6.14614973 3.4 6.14614973 3.73333333 5.80203209 3.73333333 5.38909091L3.73333333 5.0105615 4.2 4.76967914C4.96666667 4.35673797 5.43333333 3.53085561 5.43333333 2.63614973L5.43333333 2.42967914C5.43333333.846737968 4.2.020855615 3 .020855615L3 .020855615zM3 7.00644385C1.8 7.00644385 1.8 8.93350267 3 8.93350267 4.2 8.93350267 4.2 7.00644385 3 7.00644385L3 7.00644385z"></path></g></g></svg>
+</span> <span class="navigation__menu-label">Контакты</span></a></div>
+                <div class="navigation__footer">
+                    <div class="navigation__locale">
+                        <div class="navigation__locale-item"><a href="https://www.135.by/#"
+                                                                class="navigation__locale-link navigation__locale-link--be">Беларуская</a>
+                        </div>
+                        <div class="navigation__locale-item"><a href="https://www.135.by/#"
+                                                                class="navigation__locale-link navigation__locale-link--ru navigation__locale-link--active">Русский</a>
+                        </div>
+                        <div class="navigation__locale-item"><a href="https://www.135.by/#"
+                                                                class="navigation__locale-link navigation__locale-link--en">English</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mapbox mapboxgl-map">
+        <div class="mapboxgl-canary" style="visibility: hidden;"></div>
+        <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
+            <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="1987" height="1745"
+                    style="width: 795px; height: 698px;"></canvas>
+            <div class="marker marker--start mapboxgl-marker mapboxgl-marker-anchor-center marker--value"
+                 style="transform: translate(-50%, -50%) translate(572px, 360px) rotateX(0deg) rotateZ(0deg);">
+                <span>4</span>
+                <span>мин</span>
+            </div>
+        </div>
+        <div class="mapboxgl-control-container">
+            <div class="mapboxgl-ctrl-top-left"></div>
+            <div class="mapboxgl-ctrl-top-right"></div>
+            <div class="mapboxgl-ctrl-bottom-left">
+                <div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo" target="_blank"
+                                                                     rel="noopener nofollow"
+                                                                     href="https://www.mapbox.com/"
+                                                                     aria-label="Mapbox logo"></a></div>
+            </div>
+            <div class="mapboxgl-ctrl-bottom-right">
+                <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
+                    <button class="mapboxgl-ctrl-zoom-in" type="button" title="Zoom in" aria-label="Zoom in"><span
+                            class="mapboxgl-ctrl-icon" aria-hidden="true"></span></button>
+                    <button class="mapboxgl-ctrl-zoom-out" type="button" title="Zoom out" aria-label="Zoom out"><span
+                            class="mapboxgl-ctrl-icon" aria-hidden="true"></span></button>
+                </div>
+                <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib">
+                    <div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.openmaptiles.org/" target="_blank">©
+                        OpenMapTiles</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">©
+                        OpenStreetMap contributors</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="index">
+        <div class="index__content">
+            <div class="index__order">
+                <div class="index__body index__body--white">
+
+                    <div class="index__geolocate"></div>
+                    <div class="index__details">
+                        <div class="index__details-wrap">
+                            <div>
+                                <div class="index__types-item" style="width: 560px;" th:each="offer : ${offers}">
+                                    <div class="index__types-wrap">
+                                        <div class="index__types-info">
+                                            <div class="index__types-indicator" style="">
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM8.77664 5.1332C8.92169 5.1332 9.01476 5.2874 8.94716 5.41574L4.79571 11.6706C4.71795 11.8182 4.51929 11.7976 4.45377 11.6714C4.42554 11.6171 4.4378 11.5525 4.44926 11.4922L4.44996 11.4885L5.2721 7.15261L5.27231 7.15145C5.2839 7.09037 5.29633 7.02483 5.26718 6.96998C5.2348 6.90905 5.17068 6.86756 5.09687 6.86756H3.22393C3.07888 6.86756 2.98581 6.71336 3.05341 6.58502L7.20486 0.330166C7.28262 0.182532 7.48128 0.203189 7.54679 0.329321C7.57503 0.383676 7.56277 0.448229 7.55131 0.508584L7.5506 0.512301L6.72847 4.84815L6.72825 4.8493C6.71667 4.91039 6.70424 4.97592 6.73339 5.03078C6.76576 5.09171 6.82988 5.1332 6.90369 5.1332H8.77664Z"
+                                                          fill="#DF0909"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="index__types-indicator">
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path opacity="0.5" fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12ZM5.41259 3.5061C5.62373 3.6954 5.864 3.79005 6.13338 3.79005C6.40277 3.79005 6.63939 3.6954 6.84326 3.5061C7.04712 3.30952 7.14905 3.08018 7.14905 2.81807C7.14905 2.55596 7.04348 2.33026 6.83233 2.14096C6.62847 1.94438 6.39549 1.84609 6.13338 1.84609C5.864 1.84609 5.62373 1.94438 5.41259 2.14096C5.20873 2.33026 5.1068 2.55596 5.1068 2.81807C5.1068 3.08746 5.20873 3.3168 5.41259 3.5061ZM5.07404 9.10862C4.97939 9.13047 4.82649 9.14139 4.61535 9.14139V9.50178H7.6405V9.14139C7.39295 9.14139 7.23277 9.10862 7.15997 9.0431C7.08716 8.97757 7.05076 8.82832 7.05076 8.59533V4.31426H6.4501L4.61535 4.59821V4.95861H4.99759C5.12864 4.95861 5.21237 4.98409 5.24877 5.03505C5.29246 5.07874 5.3143 5.17339 5.3143 5.319V8.59533C5.3143 8.76279 5.2961 8.88292 5.2597 8.95573C5.23057 9.02854 5.16869 9.0795 5.07404 9.10862Z"
+                                                          fill="#8C8C8C"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="index__types-content">
+                                            <div class="index__types-label"
+                                                 style="font-size: large">Такси:
+                                                <b th:text="${offer.taxiName}" style="font-size: large"></b>
+                                            </div>
+                                            <div class="index__types-value">
+                                                <div class="index__types-value-current"
+                                                     style="font-size: medium">
+                                                    BYN
+                                                    <b th:text="${offer.price}" style="font-size: medium"></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="font-size: medium; padding-bottom: 10px">
+                                            Класс:
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index__action index__action--inline">
+                            <button type="submit" class="button button--default">Вызвать автомобиль</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="autocomplete">
+                <div class="autocomplete__container">
+                    <form action="https://www.135.by/" class="autocomplete__header">
+                        <div class="autocomplete__header-action">
+                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"
+                                      fill="#6F6F6F"></path>
+                            </svg>
+                        </div>
+                        <div class="autocomplete__header-content"><input type="search" autocorrect="off"
+                                                                         autocomplete="off"
+                                                                         spellcheck="false"
+                                                                         placeholder="Введите пункт назначения"
+                                                                         class="autocomplete__header-input"></div>
+                        <div class="autocomplete__header-action">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 1L5 5M5 5L1 9M5 5L9 9M5 5L1 1" stroke="#8C8C8C" stroke-width="2"
+                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </form>
+                    <div class="autocomplete__options"><!----> <!----> </div>
+                </div>
+            </div>
+            <div class="destinations">
+                <div class="destinations__container">
+                    <div class="destinations__header">
+                        <div class="destinations__navigation"><a href="https://www.135.by/#"
+                                                                 class="destinations__navigation-link"><span>Закрыть</span></a>
+                        </div>
+                    </div>
+                    <div class="destinations__content"><!---->
+                        <div class="destinations__section">
+                            <div class="destinations__list">
+                                <div class="destinations__list-wrapper"></div>
+                                <div class="destinations__list-button">
+                                    <div class="destinations__list-action">
+                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6 1V6M6 6V11M6 6H11M6 6H1" stroke="#0978DF" stroke-width="2"
+                                                  stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="destinations__list-title">Добавить остановку</div>
+                                </div>
+                            </div>
+                        </div> <!----></div>
+                </div>
+            </div>
+            <div class="location">
+                <div class="location__container">
+                    <div class="location__header">
+                        <div class="location__header-action">
+                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"
+                                      fill="#6F6F6F"></path>
+                            </svg>
+                        </div>
+                        <div class="location__header-content">
+                            <div class="location__header-value">
+                                Центральный район
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location__wrapper">
+                        <div class="mapbox mapboxgl-map">
+                            <div class="mapboxgl-canary" style="visibility: hidden;"></div>
+                            <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
+                                <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="1987" height="1762"
+                                        style="width: 795px; height: 705px;"></canvas>
+                                <div class="marker marker--start mapboxgl-marker mapboxgl-marker-anchor-center"
+                                     style="transform: translate(-50%, -50%) translate(398px, 353px) rotateX(0deg) rotateZ(0deg);"></div>
+                            </div>
+                            <div class="mapboxgl-control-container">
+                                <div class="mapboxgl-ctrl-top-left"></div>
+                                <div class="mapboxgl-ctrl-top-right"></div>
+                                <div class="mapboxgl-ctrl-bottom-left">
+                                    <div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo"
+                                                                                         target="_blank"
+                                                                                         rel="noopener nofollow"
+                                                                                         href="https://www.mapbox.com/"
+                                                                                         aria-label="Mapbox logo"></a>
+                                    </div>
+                                </div>
+                                <div class="mapboxgl-ctrl-bottom-right">
+                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
+                                        <button class="mapboxgl-ctrl-zoom-in" type="button" title="Zoom in"
+                                                aria-label="Zoom in"><span class="mapboxgl-ctrl-icon"
+                                                                           aria-hidden="true"></span></button>
+                                        <button class="mapboxgl-ctrl-zoom-out" type="button" title="Zoom out"
+                                                aria-label="Zoom out"><span class="mapboxgl-ctrl-icon"
+                                                                            aria-hidden="true"></span></button>
+                                    </div>
+                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib">
+                                        <div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.openmaptiles.org/"
+                                                                                   target="_blank">© OpenMapTiles</a> <a
+                                                href="https://www.openstreetmap.org/copyright" target="_blank">©
+                                            OpenStreetMap contributors</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="location__action">
+                        <button class="button button--default">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!----></div>
+    <script type="text/javascript" src="script/vendor.fdb1b4c760af8d4a13a9.js"></script>
+    <script type="text/javascript" src="script/main.fdb1b4c760af8d4a13a9.js"></script>
+
+
+    <!--<script type="text/javascript" id="">(function (a, e, f, g, b, c, d) {-->
+    <!--    a[b] = a[b] || function () {-->
+    <!--        (a[b].a = a[b].a || []).push(arguments)-->
+    <!--    };-->
+    <!--    a[b].l = 1 * new Date;-->
+    <!--    c = e.createElement(f);-->
+    <!--    d = e.getElementsByTagName(f)[0];-->
+    <!--    c.async = 1;-->
+    <!--    c.src = g;-->
+    <!--    d.parentNode.insertBefore(c, d)-->
+    <!--})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");-->
+    <!--ym(19103341, "init", {clickmap: !0, trackLinks: !0, accurateTrackBounce: !0, webvisor: !0, trackHash: !0});</script>-->
+    <!--<noscript>-->
+    <!--    <div><img src="https://mc.yandex.ru/watch/19103341" style="position:absolute; left:-9999px;" alt=""></div>-->
+    <!--</noscript>-->
+    <!--<script type="text/javascript"-->
+    <!--        id="">(window.Image ? new Image : document.createElement("img")).src = "https://vk.com/rtrg?p\x3dVK-RTRG-223342-bwYi8";</script>-->
+    <!--<script type="text/javascript" id="">!function (b, e, f, g, a, c, d) {-->
+    <!--    b.fbq || (a = b.fbq = function () {-->
+    <!--        a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)-->
+    <!--    }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d))-->
+    <!--}(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");-->
+    <!--fbq("init", "442054893041462");-->
+    <!--fbq("track", "PageView");</script>-->
+    <!--<noscript><img height="1" width="1" style="display:none"-->
+    <!--               src="https://www.facebook.com/tr?id=442054893041462&amp;ev=PageView&amp;noscript=1"></noscript>-->
+
+    <!--<script type="text/javascript" id="">!function (a, e, f, k, h, g, c, b, d) {-->
+    <!--    a.AppsFlyerSdkObject = h;-->
+    <!--    a.AF = a.AF || function () {-->
+    <!--        (a.AF.q = a.AF.q || []).push([Date.now()].concat(Array.prototype.slice.call(arguments)))-->
+    <!--    };-->
+    <!--    a.AF.id = a.AF.id || c;-->
+    <!--    a.AF.plugins = {};-->
+    <!--    b = e.createElement(f);-->
+    <!--    d = e.getElementsByTagName(f)[0];-->
+    <!--    b.async = 1;-->
+    <!--    b.src = "https://websdk.appsflyer.com?" + (0 < g.length ? "st\x3d" + g.split(",").sort().join(",") + "\x26" : "") + (0 < c.length ? "af_id\x3d" + c : "");-->
+    <!--    d.parentNode.insertBefore(b, d)-->
+    <!--}(window, document, "script", 0, "AF", "pba", {pba: {webAppId: "0d023401-02b6-48fd-bffe-829fbdf900f7"}});</script>-->
+    <!--<script type="text/javascript" id="">!function (b, e, f, g, a, c, d) {-->
+    <!--    b.fbq || (a = b.fbq = function () {-->
+    <!--        a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments)-->
+    <!--    }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d))-->
+    <!--}(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");-->
+    <!--fbq("init", "3601905986601612");-->
+    <!--fbq("set", "agent", "tmgoogletagmanager", "3601905986601612");-->
+    <!--fbq("track", "PageView");</script>-->
+    <!--<noscript><img height="1" width="1" style="display:none"-->
+    <!--               src="https://www.facebook.com/tr?id=3601905986601612&amp;ev=PageView&amp;noscript=1"></noscript>-->
+</div>
+</body>
+</html>

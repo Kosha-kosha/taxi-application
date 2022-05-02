@@ -1,19 +1,20 @@
 package com.mytaxi.taxiapplication.adapter.taxi.taxi135;
 
-import com.mytaxi.taxiapplication.adapter.address.impl.TaxiSiteAddressAdapter;
 import com.mytaxi.taxiapplication.adapter.address.impl.model.Location;
 import com.mytaxi.taxiapplication.adapter.taxi.BaseTaxiAdapter;
-import com.mytaxi.taxiapplication.adapter.taxi.taxi135.model.Price135Request;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi135.model.Coordinates;
+import com.mytaxi.taxiapplication.adapter.taxi.taxi135.model.Price135Request;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi135.model.Price135Response;
-import com.mytaxi.taxiapplication.model.Offer;
-import com.mytaxi.taxiapplication.model.Order;
+import com.mytaxi.taxiapplication.dto.OfferDTO;
+import com.mytaxi.taxiapplication.dto.OrderDTO;
+import com.mytaxi.taxiapplication.exception.AddressNotFoundException;
+import com.mytaxi.taxiapplication.service.AddressValidService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,35 +22,32 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class Taxi135Adapter implements BaseTaxiAdapter {
-    private TaxiSiteAddressAdapter addressAdapter = TaxiSiteAddressAdapter.getInstance();
+    @Autowired
+    private AddressValidService addressValidService;
+
     @Value("${adapters.135.url}")
     private String url;
 
     @Override
-    public List<Offer> getOffers(Order order) {
+    public List<OfferDTO> getOffers(OrderDTO order) throws AddressNotFoundException {
         log.info("url {}", url);
 
-        Price135Request request = null;
-        BigDecimal[] startPointCoordinates = addressAdapter.getLocation(order.getStartPoint()).getCoordinates().getCoordinates();
-        BigDecimal[] finishPointCoordinates = addressAdapter.getLocation(order.getFinishPoint()).getCoordinates().getCoordinates();
+        Location startPoint = addressValidService.findAddress(order.getStartPoint());
+        Location finishPoint = addressValidService.findAddress(order.getFinishPoint());
 
-        if (startPointCoordinates.length >= 1 && finishPointCoordinates.length >= 1) {
+        Price135Request request = Price135Request.builder()
+                .locations(List.of(
+                        Coordinates.builder()
+                                .lg(getLgCoordinates(startPoint))
+                                .lt(getLtCoordinates(startPoint))
+                                .build(),
+                        Coordinates.builder()
+                                .lg(getLgCoordinates(finishPoint))
+                                .lt(getLtCoordinates(finishPoint))
+                                .build()
+                ))
+                .build();
 
-            request = Price135Request.builder()
-                    .locations(List.of(
-                            Coordinates.builder()
-                                    .lg(getLgCoordinates(addressAdapter.getLocation(order.getStartPoint())))
-                                    .lt(getLtCoordinates(addressAdapter.getLocation(order.getStartPoint())))
-                                    .build(),
-                            Coordinates.builder()
-                                    .lg(getLgCoordinates(addressAdapter.getLocation(order.getFinishPoint())))
-                                    .lt(getLtCoordinates(addressAdapter.getLocation(order.getFinishPoint())))
-                                    .build()
-                    ))
-                    .build();
-        }
-
-//        System.out.println(request);
 
         RestTemplate restTemplate = new RestTemplate();
         Price135Response[] responses = restTemplate.postForObject(url, request, Price135Response[].class);
@@ -66,19 +64,17 @@ public class Taxi135Adapter implements BaseTaxiAdapter {
     private String getLgCoordinates(Location location) {
         return location
                 .getCoordinates()
-                .getCoordinates()[0]
-                .toString();
+                .getCoordinates()[0].toString();
     }
 
     private String getLtCoordinates(Location location) {
         return location
                 .getCoordinates()
-                .getCoordinates()[1]
-                .toString();
+                .getCoordinates()[1].toString();
     }
 
-    private static Offer priceResponseToOffer(Price135Response response) {
-        return Offer.builder()
+    private static OfferDTO priceResponseToOffer(Price135Response response) {
+        return OfferDTO.builder()
                 .price(response.getPrice())
                 .taxiName("135")
                 .build();

@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.model;
+package com.mytaxi.taxiapplication.dto;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Offer {
+public class OfferDTO {
     BigDecimal price;
     String taxiName;
     String description;

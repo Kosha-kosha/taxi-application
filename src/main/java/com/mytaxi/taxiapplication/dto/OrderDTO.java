@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.model;
+package com.mytaxi.taxiapplication.dto;
 
 import com.mytaxi.taxiapplication.adapter.address.impl.model.Address;
 import lombok.AccessLevel;
@@ -14,7 +14,7 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class Order {
+public class OrderDTO {
    Address startPoint;
    Address finishPoint;
    String description;

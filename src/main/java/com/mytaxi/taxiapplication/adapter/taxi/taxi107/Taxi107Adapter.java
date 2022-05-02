@@ -1,15 +1,18 @@
 package com.mytaxi.taxiapplication.adapter.taxi.taxi107;
 
-import com.mytaxi.taxiapplication.adapter.address.impl.TaxiSiteAddressAdapter;
+import com.mytaxi.taxiapplication.adapter.address.impl.model.Location;
 import com.mytaxi.taxiapplication.adapter.taxi.BaseTaxiAdapter;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi107.model.Info;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi107.model.Point;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi107.model.Price107Request;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi107.model.Price107Response;
 import com.mytaxi.taxiapplication.adapter.taxi.taxi107.model.Route;
-import com.mytaxi.taxiapplication.model.Offer;
-import com.mytaxi.taxiapplication.model.Order;
+import com.mytaxi.taxiapplication.dto.OfferDTO;
+import com.mytaxi.taxiapplication.dto.OrderDTO;
+import com.mytaxi.taxiapplication.exception.AddressNotFoundException;
+import com.mytaxi.taxiapplication.service.AddressValidService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -29,41 +32,44 @@ import java.util.Map;
 public class Taxi107Adapter implements BaseTaxiAdapter {
     private static final String HEADER_NAME = "hive-context";
     private static final String HEADER_VALUE = "170000000054941";
-    private TaxiSiteAddressAdapter addressAdapter = TaxiSiteAddressAdapter.getInstance();
+
+    @Autowired
+    private AddressValidService addressValidService;
 
     @Value("${adapters.107.url}")
     private String url;
 
     @Override
-    public List<Offer> getOffers(Order order) {
+    public List<OfferDTO> getOffers(OrderDTO order) throws AddressNotFoundException {
 
         log.info("url {}", url);
+
+        Location startLocation = addressValidService.findAddress(order.getStartPoint());
+        Location finishLocation = addressValidService.findAddress(order.getFinishPoint());
 
         Price107Request request = Price107Request.builder()
                 .options(new Object[]{})
                 .route(List.of(
                         Route.builder()
-                                .id(addressAdapter.getLocation(order.getStartPoint()).getId())
+                                .id(startLocation.getId())
                                 .info(Info.builder()
                                         .house(order.getStartPoint().getHomeNumber())
                                         .build())
                                 .coordinates(
                                         Point.builder()
-                                                .coordinates(addressAdapter.getLocation(order.getStartPoint())
-                                                        .getCoordinates().getCoordinates())
+                                                .coordinates(startLocation.getCoordinates().getCoordinates())
                                                 .type("Point")
                                                 .build()
                                 )
                                 .build(),
                         Route.builder()
-                                .id(addressAdapter.getLocation(order.getFinishPoint()).getId())
+                                .id(finishLocation.getId())
                                 .info(Info.builder()
                                         .house(order.getFinishPoint().getHomeNumber())
                                         .build())
                                 .coordinates(
                                         Point.builder()
-                                                .coordinates(addressAdapter.getLocation(order.getFinishPoint())
-                                                        .getCoordinates().getCoordinates())
+                                                .coordinates(finishLocation.getCoordinates().getCoordinates())
                                                 .type("Point")
                                                 .build()
                                 )
@@ -76,7 +82,6 @@ public class Taxi107Adapter implements BaseTaxiAdapter {
 
         Price107Response response =
                 restTemplate.postForObject(url, getHttpEntity(request, Map.of(HEADER_NAME, HEADER_VALUE)), Price107Response.class);
-//        System.out.println(response.getTotal());
         return List.of(priceResponseToOffer(response));
     }
 
@@ -85,8 +90,8 @@ public class Taxi107Adapter implements BaseTaxiAdapter {
         return "107";
     }
 
-    private static Offer priceResponseToOffer(Price107Response response) {
-        return Offer.builder()
+    private static OfferDTO priceResponseToOffer(Price107Response response) {
+        return OfferDTO.builder()
                 .price(response.getTotal())
                 .taxiName("107")
                 .build();
