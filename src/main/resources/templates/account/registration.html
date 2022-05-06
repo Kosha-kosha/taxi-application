@@ -8,7 +8,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="#">Welcome to Spring Security Course</a>
+        <a href="#">Welcome to My taxi application</a>
     </div>
 <!--    <div class="col-md-12">-->
 <!--        <div class="form-group" data-select2-id="13">-->
@@ -34,7 +34,7 @@
 
 
                 <p class="login-box-msg">Register a new account</p>
-                <form action="#" th:action="@{/account/register}" th:object="${userData}" method="post">
+                <form action="#" th:action="@{/registration/register}" th:object="${userData}" method="post">
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
                         <p th:each="err : ${#fields.errors('*')}" th:text="${err}"></p>
                     </div>
@@ -89,7 +89,7 @@
                     </div>
                 </form>
             </div>
-            <a href="login" class="text-center">I already have an Account</a>
+            <a href="/user/home" class="text-center">I already have an Account</a>
         </div>
         <!-- /.form-box -->
     </div><!-- /.card -->

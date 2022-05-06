@@ -1,6 +1,6 @@
 package com.mytaxi.taxiapplication.service;
 
-import com.mytaxi.taxiapplication.dto.UserDataDTO;
+import com.mytaxi.taxiapplication.dto.UserDTO;
 import com.mytaxi.taxiapplication.entity.UserEntity;
 import com.mytaxi.taxiapplication.exception.UserAlreadyExistException;
 import com.mytaxi.taxiapplication.model.UserPrincipal;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
@@ -41,7 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(UserDataDTO user) throws UserAlreadyExistException {
+    public boolean saveUser(UserDTO user) throws UserAlreadyExistException {
         if (checkIfUserExist(user.getUserName())) {
             throw new UserAlreadyExistException("User already exists for this name: " + user.getUserName());
         }
@@ -64,6 +64,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
         return false;
     }
+
 
     //    public List<UserEntity> usergtList(Integer idMin) {
 //        return em.createQuery("SELECT u FROM user u WHERE u.id > :paramId", User.class)

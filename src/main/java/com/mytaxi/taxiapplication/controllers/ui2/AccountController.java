@@ -1,45 +1,40 @@
 package com.mytaxi.taxiapplication.controllers.ui2;
 
-import com.mytaxi.taxiapplication.dto.UserDataDTO;
-import com.mytaxi.taxiapplication.exception.UserAlreadyExistException;
-import com.mytaxi.taxiapplication.service.UserDetailsServiceImpl;
+import com.mytaxi.taxiapplication.dto.ChangePasswordDTO;
+import com.mytaxi.taxiapplication.service.CustomerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
-@RequestMapping("/account")
+@RequestMapping("/user/account")
 public class AccountController {
     @Autowired
-    private UserDetailsServiceImpl userService;
+    private CustomerAccountService customerAccountService;
 
-    @GetMapping("/register")
-    public String registration(Model model) {
-        model.addAttribute("userData", new UserDataDTO());
-
-        return "account/registration";
+    @GetMapping()
+    public String accountMenu() {
+        return "account/accountMenu";
     }
 
-    @PostMapping("/register")
-    public String addUser(@Valid UserDataDTO userData, BindingResult bindingResult, Model model) {
+    @GetMapping("/change_password")
+    public String resetPassword(Model model) {
+        model.addAttribute("passwordDTO", new ChangePasswordDTO());
+        return "account/changePassword";
+    }
 
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("registrationForm", userData);
-            return "account/registration";
+    @PostMapping("/reset_password")
+    public String changePassword(@ModelAttribute("passwordDTO") ChangePasswordDTO passwordDTO, Principal principal) {
+        if (passwordDTO.getOldPassword().equals(customerAccountService.getPassword(principal.getName()))) {
+            customerAccountService.updatePassword(principal.getName(), passwordDTO.getNewPassword());
+            return "redirect:/user/home";
         }
-        try {
-            userService.saveUser(userData);
-        } catch (UserAlreadyExistException e) {
-            bindingResult.rejectValue("phoneNumber", "userData.phoneNumber", "An account already exists for this name.");
-            model.addAttribute("registrationForm", userData);
-            return "account/registration";
-        }
-        return "redirect:/user/home";
+        return "redirect:/user/account/change_password";
     }
 }

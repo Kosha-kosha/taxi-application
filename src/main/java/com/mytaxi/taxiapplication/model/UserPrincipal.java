@@ -15,12 +15,14 @@ public class UserPrincipal implements UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    private Integer userID;
     private String userName;
     private String password;
     private boolean isActive;
     private List<GrantedAuthority> authorities;
 
     public UserPrincipal(UserEntity user) {
+        this.userID = user.getId();
         this.userName = user.getUsername();
         this.password = user.getPassword();
         this.isActive = user.isActive();
@@ -35,6 +37,10 @@ public class UserPrincipal implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
+    }
+
+    public Integer getUserID() {
+        return userID;
     }
 
     @Override

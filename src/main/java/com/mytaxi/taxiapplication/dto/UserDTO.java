@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class UserDataDTO {
+public class UserDTO {
     @NotEmpty(message = "First name can not be empty")
     private String userName;
 

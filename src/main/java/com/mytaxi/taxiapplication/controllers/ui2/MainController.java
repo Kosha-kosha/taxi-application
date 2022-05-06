@@ -10,7 +10,7 @@ public class MainController {
 
     @GetMapping("/")
     public String all() {
-        return "redirect:/user/home";
+        return "core/start";
     }
 
     @GetMapping("/user/home")
@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping("/admin")
     public String admin() {
-        return "Admin Page";
+        return "redirect:admin_page/show_users";
     }
 
 }
