@@ -41,19 +41,12 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(UserDTO user) throws UserAlreadyExistException {
-        if (checkIfUserExist(user.getUserName())) {
-            throw new UserAlreadyExistException("User already exists for this name: " + user.getUserName());
+    public boolean saveUser(UserDTO userDTO) throws UserAlreadyExistException {
+        if (checkIfUserExist(userDTO.getUserName())) {
+            throw new UserAlreadyExistException("User already exists for this name: " + userDTO.getUserName());
         }
-
-        UserEntity entity = new UserEntity();
-        entity.setUserName(user.getUserName());
-        entity.setPassword(user.getPassword());
-        entity.setActive(true);
-        entity.setPhoneNumber(user.getPhoneNumber());
-        entity.setRoles("ROLE_USER");
-        userRepository.save(entity);
-        loadUserByUsername(user.getUserName());
+        userRepository.save(mapUserDTOToEntity(userDTO));
+        loadUserByUsername(userDTO.getUserName());
         return true;
     }
 
@@ -72,5 +65,15 @@ public class UserService implements UserDetailsService {
 //    }
     private boolean checkIfUserExist(String userName) {
         return userRepository.findByUserName(userName).isPresent();
+    }
+
+    private UserEntity mapUserDTOToEntity(UserDTO userDTO) {
+        return UserEntity.builder()
+                .userName(userDTO.getUserName())
+                .password(userDTO.getPassword())
+                .isActive(true)
+                .phoneNumber(userDTO.getPhoneNumber())
+                .roles("ROLE_USER")
+                .build();
     }
 }

@@ -77,6 +77,7 @@ public class Taxi135Adapter implements BaseTaxiAdapter {
         return OfferDTO.builder()
                 .price(response.getPrice())
                 .taxiName("135")
+                .description(response.getTariffPrice().getName())
                 .build();
     }
 

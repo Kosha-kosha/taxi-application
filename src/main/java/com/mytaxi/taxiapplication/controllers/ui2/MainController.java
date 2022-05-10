@@ -20,7 +20,7 @@ public class MainController {
 
     @GetMapping("/admin")
     public String admin() {
-        return "redirect:admin_page/show_users";
+        return "admin/mainPage";
     }
 
 }

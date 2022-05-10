@@ -14,7 +14,15 @@ public class CustomerAccountService {
         return true;
     }
 
+    public boolean updatePhoneNumber(String userName, String newPhoneNumber) {
+        userRepository.resetPhoneNumber(userName, newPhoneNumber);
+        return true;
+    }
     public String getPassword(String userName) {
         return userRepository.getPassword(userName);
+    }
+
+    public String getPhoneNumber(String userName) {
+        return userRepository.getPhoneNumber(userName);
     }
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Change phone number</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/user/account/reset_phone_number}" method="post" th:object="${phoneNumberDTO}">
+        <p>
+            <input type="text" placeholder="Старый номер телефона" th:field="*{oldNumber}">
+        </p>
+        <p>
+            <input type="text" placeholder="Новый номер телефона" th:field="*{newNumber}">
+        </p>
+        <p>
+            <button type="submit">Изменить</button>
+        </p>
+    </form>
+</div>
+</body>
+</html>

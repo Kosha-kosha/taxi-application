@@ -29,4 +29,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
     @Transactional
     @Query("select password from UserEntity where userName = :userName")
     String getPassword(@Param("userName") String userName);
+
+    @Transactional
+    @Query("select phoneNumber from UserEntity where userName = :userName")
+    String getPhoneNumber(@Param("userName") String userName);
 }

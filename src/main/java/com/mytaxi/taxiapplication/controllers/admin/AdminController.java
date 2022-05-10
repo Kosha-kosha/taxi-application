@@ -1,4 +1,4 @@
-package com.mytaxi.taxiapplication.controllers.ui2.admin;
+package com.mytaxi.taxiapplication.controllers.admin;
 
 import com.mytaxi.taxiapplication.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/admin_page")
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     UserService userDetailsService;
 
-    @GetMapping("/show_users")
+    @GetMapping("/all_users")
     public String showUsers(Model model) {
-        model.addAttribute("list", userDetailsService.allUsers());
-        return "admin/adminPage";
+        model.addAttribute("users", userDetailsService.allUsers());
+        return "admin/viewUsers";
     }
 }

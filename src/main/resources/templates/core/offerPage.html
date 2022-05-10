@@ -121,6 +121,20 @@
         </div>
     </div>
 
+    <div>
+        <input type="radio" id="standard" name="categories" value="Standard">
+        <input type="radio" id="comfort" name="categories" value=Comfort">
+        <input type="radio" id="business" name="categories" value="Business">
+
+
+        <ol class="posts">
+            <li class="post" data-category="CSS JavaScript">...</li>
+            <li class="post" data-category="CSS JavaScript">...</li>
+
+        </ol>
+
+    </div>
+
     <div class="index">
         <div class="index__content">
             <div class="index__order">
@@ -132,6 +146,7 @@
                             <div>
                                 <div class="index__types-item" style="width: 560px;" th:each="offer : ${offers}">
                                     <div class="index__types-wrap">
+
                                         <div class="index__types-info">
                                             <div class="index__types-indicator" style="">
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
@@ -153,142 +168,159 @@
                                         <div class="index__types-content">
                                             <div class="index__types-label"
                                                  style="font-size: large">Такси:
-                                                <b th:text="${offer.taxiName}" style="font-size: large"></b>
+                                                <b th:text="${offer.taxiName}"
+                                                   style="font-size: large"></b>
                                             </div>
                                             <div class="index__types-value">
                                                 <div class="index__types-value-current"
                                                      style="font-size: medium">
                                                     BYN
-                                                    <b th:text="${offer.price}" style="font-size: medium"></b>
+                                                    <b th:text="${offer.price}"
+                                                       style="font-size: medium"></b>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="font-size: medium; padding-bottom: 10px">
+                                        <div style="font-size: medium; padding-bottom: 10px; height: 20px">
                                             Класс:
+                                            <b th:text="${offer.description}"
+                                               style="font-size: large"></b>
                                         </div>
+                                        <form th:action="@{/user/order}" th:object="${offerDTO}" method="post">
+                                            <input type="hidden" th:value="${offer.price}" th:attr="name='price'">
+                                            <input type="hidden" th:value="${offer.taxiName}" th:attr="name='taxiName'">
+                                            <input type="hidden" th:value="${offer.description}"
+                                                   th:attr="name='description'">
+                                            <button class="button button--default" type="submit"
+                                                    style="padding: 1px; position:relative; margin-bottom: 60px; width: 200px; height: 27px;">
+                                                <div style="position:relative; padding-bottom: 40px; font-size: 20px">
+                                                    Вызвать автомобиль
+                                                </div>
+                                            </button>
+
+                                        </form>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
-                        <div class="index__action index__action--inline">
-                            <button type="submit" class="button button--default">Вызвать автомобиль</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="autocomplete">
-                <div class="autocomplete__container">
-                    <form action="https://www.135.by/" class="autocomplete__header">
-                        <div class="autocomplete__header-action">
-                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"
-                                      fill="#6F6F6F"></path>
-                            </svg>
-                        </div>
-                        <div class="autocomplete__header-content"><input type="search" autocorrect="off"
-                                                                         autocomplete="off"
-                                                                         spellcheck="false"
-                                                                         placeholder="Введите пункт назначения"
-                                                                         class="autocomplete__header-input"></div>
-                        <div class="autocomplete__header-action">
-                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 1L5 5M5 5L1 9M5 5L9 9M5 5L1 1" stroke="#8C8C8C" stroke-width="2"
-                                      stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </div>
-                    </form>
-                    <div class="autocomplete__options"><!----> <!----> </div>
-                </div>
-            </div>
-            <div class="destinations">
-                <div class="destinations__container">
-                    <div class="destinations__header">
-                        <div class="destinations__navigation"><a href="https://www.135.by/#"
-                                                                 class="destinations__navigation-link"><span>Закрыть</span></a>
-                        </div>
-                    </div>
-                    <div class="destinations__content"><!---->
-                        <div class="destinations__section">
-                            <div class="destinations__list">
-                                <div class="destinations__list-wrapper"></div>
-                                <div class="destinations__list-button">
-                                    <div class="destinations__list-action">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M6 1V6M6 6V11M6 6H11M6 6H1" stroke="#0978DF" stroke-width="2"
-                                                  stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="destinations__list-title">Добавить остановку</div>
-                                </div>
-                            </div>
-                        </div> <!----></div>
-                </div>
-            </div>
-            <div class="location">
-                <div class="location__container">
-                    <div class="location__header">
-                        <div class="location__header-action">
-                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"
-                                      fill="#6F6F6F"></path>
-                            </svg>
-                        </div>
-                        <div class="location__header-content">
-                            <div class="location__header-value">
-                                Центральный район
-                            </div>
-                        </div>
-                    </div>
-                    <div class="location__wrapper">
-                        <div class="mapbox mapboxgl-map">
-                            <div class="mapboxgl-canary" style="visibility: hidden;"></div>
-                            <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">
-                                <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="1987" height="1762"
-                                        style="width: 795px; height: 705px;"></canvas>
-                                <div class="marker marker--start mapboxgl-marker mapboxgl-marker-anchor-center"
-                                     style="transform: translate(-50%, -50%) translate(398px, 353px) rotateX(0deg) rotateZ(0deg);"></div>
-                            </div>
-                            <div class="mapboxgl-control-container">
-                                <div class="mapboxgl-ctrl-top-left"></div>
-                                <div class="mapboxgl-ctrl-top-right"></div>
-                                <div class="mapboxgl-ctrl-bottom-left">
-                                    <div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo"
-                                                                                         target="_blank"
-                                                                                         rel="noopener nofollow"
-                                                                                         href="https://www.mapbox.com/"
-                                                                                         aria-label="Mapbox logo"></a>
-                                    </div>
-                                </div>
-                                <div class="mapboxgl-ctrl-bottom-right">
-                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-group">
-                                        <button class="mapboxgl-ctrl-zoom-in" type="button" title="Zoom in"
-                                                aria-label="Zoom in"><span class="mapboxgl-ctrl-icon"
-                                                                           aria-hidden="true"></span></button>
-                                        <button class="mapboxgl-ctrl-zoom-out" type="button" title="Zoom out"
-                                                aria-label="Zoom out"><span class="mapboxgl-ctrl-icon"
-                                                                            aria-hidden="true"></span></button>
-                                    </div>
-                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib">
-                                        <div class="mapboxgl-ctrl-attrib-inner"><a href="https://www.openmaptiles.org/"
-                                                                                   target="_blank">© OpenMapTiles</a> <a
-                                                href="https://www.openstreetmap.org/copyright" target="_blank">©
-                                            OpenStreetMap contributors</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="location__action">
-                        <button class="button button--default">Сохранить</button>
-                    </div>
-                </div>
-            </div>
+<!--            <div class="autocomplete">-->
+<!--                <div class="autocomplete__container">-->
+<!--                    <form action="https://www.135.by/" class="autocomplete__header">-->
+<!--                        <div class="autocomplete__header-action">-->
+<!--                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"-->
+<!--                                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"-->
+<!--                                      fill="#6F6F6F"></path>-->
+<!--                            </svg>-->
+<!--                        </div>-->
+<!--                        <div class="autocomplete__header-content"><input type="search" autocorrect="off"-->
+<!--                                                                         autocomplete="off"-->
+<!--                                                                         spellcheck="false"-->
+<!--                                                                         placeholder="Введите пункт назначения"-->
+<!--                                                                         class="autocomplete__header-input"></div>-->
+<!--                        <div class="autocomplete__header-action">-->
+<!--                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"-->
+<!--                                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <path d="M9 1L5 5M5 5L1 9M5 5L9 9M5 5L1 1" stroke="#8C8C8C" stroke-width="2"-->
+<!--                                      stroke-linecap="round" stroke-linejoin="round"></path>-->
+<!--                            </svg>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                    <div class="autocomplete__options">&lt;!&ndash;&ndash;&gt; &lt;!&ndash;&ndash;&gt; </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="destinations">-->
+<!--                <div class="destinations__container">-->
+<!--                    <div class="destinations__header">-->
+<!--                        <div class="destinations__navigation"><a href="https://www.135.by/#"-->
+<!--                                                                 class="destinations__navigation-link"><span>Закрыть</span></a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="destinations__content">&lt;!&ndash;&ndash;&gt;-->
+<!--                        <div class="destinations__section">-->
+<!--                            <div class="destinations__list">-->
+<!--                                <div class="destinations__list-wrapper"></div>-->
+<!--                                <div class="destinations__list-button">-->
+<!--                                    <div class="destinations__list-action">-->
+<!--                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"-->
+<!--                                             xmlns="http://www.w3.org/2000/svg">-->
+<!--                                            <path d="M6 1V6M6 6V11M6 6H11M6 6H1" stroke="#0978DF" stroke-width="2"-->
+<!--                                                  stroke-linecap="round" stroke-linejoin="round"></path>-->
+<!--                                        </svg>-->
+<!--                                    </div>-->
+<!--                                    <div class="destinations__list-title">Добавить остановку</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div> &lt;!&ndash;&ndash;&gt;</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="location">-->
+<!--                <div class="location__container">-->
+<!--                    <div class="location__header">-->
+<!--                        <div class="location__header-action">-->
+<!--                            <svg width="16" height="18" viewBox="0 0 16 18" fill="none"-->
+<!--                                 xmlns="http://www.w3.org/2000/svg">-->
+<!--                                <path fill-rule="evenodd" clip-rule="evenodd"-->
+<!--                                      d="M16 7.9562H3.8L9.4 2.2512L8 0.824951L0 8.97495L8 17.125L9.4 15.6987L3.8 9.9937H16V7.9562Z"-->
+<!--                                      fill="#6F6F6F"></path>-->
+<!--                            </svg>-->
+<!--                        </div>-->
+<!--                        <div class="location__header-content">-->
+<!--                            <div class="location__header-value">-->
+<!--                                Центральный район-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="location__wrapper">-->
+<!--                        <div class="mapbox mapboxgl-map">-->
+<!--                            <div class="mapboxgl-canary" style="visibility: hidden;"></div>-->
+<!--                            <div class="mapboxgl-canvas-container mapboxgl-interactive mapboxgl-touch-drag-pan mapboxgl-touch-zoom-rotate">-->
+<!--                                <canvas class="mapboxgl-canvas" tabindex="0" aria-label="Map" width="1987"-->
+<!--                                        height="1762"-->
+<!--                                        style="width: 795px; height: 705px;"></canvas>-->
+<!--                                <div class="marker marker&#45;&#45;start mapboxgl-marker mapboxgl-marker-anchor-center"-->
+<!--                                     style="transform: translate(-50%, -50%) translate(398px, 353px) rotateX(0deg) rotateZ(0deg);"></div>-->
+<!--                            </div>-->
+<!--                            <div class="mapboxgl-control-container">-->
+<!--                                <div class="mapboxgl-ctrl-top-left"></div>-->
+<!--                                <div class="mapboxgl-ctrl-top-right"></div>-->
+<!--                                <div class="mapboxgl-ctrl-bottom-left">-->
+<!--                                    <div class="mapboxgl-ctrl" style="display: none;"><a class="mapboxgl-ctrl-logo"-->
+<!--                                                                                         target="_blank"-->
+<!--                                                                                         rel="noopener nofollow"-->
+<!--                                                                                         href="https://www.mapbox.com/"-->
+<!--                                                                                         aria-label="Mapbox logo"></a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="mapboxgl-ctrl-bottom-right">-->
+<!--                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-group">-->
+<!--                                        <button class="mapboxgl-ctrl-zoom-in" type="button" title="Zoom in"-->
+<!--                                                aria-label="Zoom in"><span class="mapboxgl-ctrl-icon"-->
+<!--                                                                           aria-hidden="true"></span></button>-->
+<!--                                        <button class="mapboxgl-ctrl-zoom-out" type="button" title="Zoom out"-->
+<!--                                                aria-label="Zoom out"><span class="mapboxgl-ctrl-icon"-->
+<!--                                                                            aria-hidden="true"></span></button>-->
+<!--                                    </div>-->
+<!--                                    <div class="mapboxgl-ctrl mapboxgl-ctrl-attrib">-->
+<!--                                        <div class="mapboxgl-ctrl-attrib-inner"><a-->
+<!--                                                href="https://www.openmaptiles.org/"-->
+<!--                                                target="_blank">© OpenMapTiles</a> <a-->
+<!--                                                href="https://www.openstreetmap.org/copyright" target="_blank">©-->
+<!--                                            OpenStreetMap contributors</a></div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="location__action">-->
+<!--                        <button class="button button&#45;&#45;default">Сохранить</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div> <!----></div>
     <script type="text/javascript" src="script/vendor.fdb1b4c760af8d4a13a9.js"></script>
     <script type="text/javascript" src="script/main.fdb1b4c760af8d4a13a9.js"></script>
@@ -344,6 +376,7 @@
     <!--fbq("track", "PageView");</script>-->
     <!--<noscript><img height="1" width="1" style="display:none"-->
     <!--               src="https://www.facebook.com/tr?id=3601905986601612&amp;ev=PageView&amp;noscript=1"></noscript>-->
+
 </div>
 </body>
 </html>
