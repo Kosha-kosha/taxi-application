@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Leave review</title>
+    <title>Report problem</title>
 </head>
 <body>
 <div>
-    <form th:action="@{/user/help/review}" th:method="POST" th:object="${review}" >
-        <input type="text" th:field="*{message}" placeholder="Ваш отзыв о нашем сервисе"
+    <form th:action="@{/user/help/problem}" th:method="POST" th:object="${problem}" >
+        <input type="text" th:field="*{message}" placeholder="Опишите проблемы, которые Вы обнаружили"
                style="padding: 50px; width: 500px; height: 200px;">
         <input type="submit" placeholder="ОТПРАВИТЬ">
     </form>

@@ -1,6 +1,7 @@
 package com.mytaxi.taxiapplication.controllers.ui2;
 
 import com.mytaxi.taxiapplication.dto.ReviewDTO;
+import com.mytaxi.taxiapplication.service.ProblemsService;
 import com.mytaxi.taxiapplication.service.ReviewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import java.time.LocalDateTime;
 public class HelpPageController {
     @Autowired
     ReviewsService reviewsService;
+    @Autowired
+    ProblemsService problemsService;
 
     @GetMapping()
     public String help() {
@@ -38,6 +41,18 @@ public class HelpPageController {
     @PostMapping("/review")
     public String saveReview(@ModelAttribute("review") ReviewDTO review, Principal principal) {
         reviewsService.saveReview(principal.getName(), review, LocalDateTime.now());
+        return "redirect:/user/help";
+    }
+
+    @GetMapping("/problem")
+    public String reportProblem(Model model) {
+        model.addAttribute("problem", new ReviewDTO());
+        return "core/reportProblemPage";
+    }
+
+    @PostMapping("/problem")
+    public String saveReport(@ModelAttribute("problem") ReviewDTO problem, Principal principal) {
+        problemsService.addProblem(principal.getName(), problem, LocalDateTime.now());
         return "redirect:/user/help";
     }
 }

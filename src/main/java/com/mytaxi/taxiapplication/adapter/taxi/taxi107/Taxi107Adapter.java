@@ -41,9 +41,6 @@ public class Taxi107Adapter implements BaseTaxiAdapter {
 
     @Override
     public List<OfferDTO> getOffers(OrderDTO order) throws AddressNotFoundException {
-
-        log.info("url {}", url);
-
         Location startLocation = addressValidService.findAddress(order.getStartPoint());
         Location finishLocation = addressValidService.findAddress(order.getFinishPoint());
 

@@ -19,7 +19,6 @@ import java.util.Set;
 public class OrderService {
     private OrderRepository orderRepository;
     private UserRepository userRepository;
-//    private TripService tripService;
 
     @Autowired
     private TripRepository tripRepository;
@@ -34,25 +33,13 @@ public class OrderService {
         this.userRepository = userRepository;
     }
 
-//    @Autowired
-//    public void setTripService(TripService tripService) {
-//        this.tripService = tripService;
-//    }
-
-
     public boolean addOrder(String userName, OrderDTO orderDTO, OfferDTO offerDTO, LocalDateTime dateTime) {
         OrderEntity orderEntity = mapOrderDTOToEntity(userName, orderDTO, offerDTO, dateTime);
-
         orderRepository.save(orderEntity);
-
         Trip trip = mapToRoute(offerDTO, dateTime);
-
         tripRepository.saveAll(Set.of(trip));
-
         orderEntity.getTrips().addAll(Set.of(trip));
-//        System.out.println(mapOrderDTOToEntity(userName, orderDTO, offerDTO, dateTime));
         orderRepository.save(orderEntity);
-//        tripService.addRoute(offerDTO, dateTime);
         return true;
     }
 
