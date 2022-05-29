@@ -12,6 +12,10 @@ import java.util.Properties;
 
 @Service
 public class EmailService {
+    // fields are initialized with values from the database
+    private String user;
+    private String password;
+
     public void sendMessage(String text, String fromAddress, String toAddress) throws MessagingException {
         Properties prop = new Properties();
         prop.put("mail.transport.protocol", "smtp");
@@ -31,7 +35,7 @@ public class EmailService {
         message.setText(text);
 
         Transport transport = session.getTransport();
-        transport.connect("ne.zaprezcheno", "temaAL20011323");
+        transport.connect(user, password);
         transport.sendMessage(message, message.getAllRecipients());
         transport.close();
     }

@@ -19,9 +19,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-//    @PersistenceContext
-//    private EntityManager em;
-
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
@@ -58,11 +55,6 @@ public class UserService implements UserDetailsService {
         return false;
     }
 
-
-    //    public List<UserEntity> usergtList(Integer idMin) {
-//        return em.createQuery("SELECT u FROM user u WHERE u.id > :paramId", User.class)
-//                .setParameter("paramId", idMin).getResultList();
-//    }
     private boolean checkIfUserExist(String userName) {
         return userRepository.findByUserName(userName).isPresent();
     }
